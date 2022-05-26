@@ -15,6 +15,7 @@
  *      INCLUDES
  *********************/
 #include "ILI9341.h"
+#include "./lcd/bsp_ili9341_lcd.h"
 #if USE_ILI9341 != 0
 
 #include <stdio.h>
@@ -138,7 +139,7 @@
 /**********************
  *  STATIC PROTOTYPES
  **********************/
-static inline void ili9341_write(int mode, uint8_t data);
+static void ili9341_write(int mode, uint8_t data);
 static inline void ili9341_write_array(int mode, uint8_t *data, uint16_t len);
 
 /**********************
@@ -158,6 +159,10 @@ static inline void ili9341_write_array(int mode, uint8_t *data, uint16_t len);
  */
 void ili9341_init(void)
 {
+    ILI9341_GPIO_Config ();
+	
+	ILI9341_BackLed_Control ( ENABLE );      //点亮LCD背光灯
+
     uint8_t data[15];
 
     /* hardware reset */
@@ -411,10 +416,12 @@ void ili9341_rotate(int degrees, bool bgr)
  * @param mode sets command or data mode for write
  * @param byte the byte to write
  */
-static inline void ili9341_write(int mode, uint8_t data)
+static void ili9341_write(int mode, uint8_t data)
 {
-    LV_DRV_DISP_CMD_DATA(mode);
-    LV_DRV_DISP_SPI_WR_BYTE(data);
+    if(mode == ILI9341_DATA_MODE)
+        ILI9341_Write_Data(data);
+    else
+        ILI9341_Write_Cmd(data);
 }
 
 /**
@@ -425,8 +432,15 @@ static inline void ili9341_write(int mode, uint8_t data)
  */
 static inline void ili9341_write_array(int mode, uint8_t *data, uint16_t len)
 {
-    LV_DRV_DISP_CMD_DATA(mode);
-    LV_DRV_DISP_SPI_WR_ARRAY(data, len);
+    int i;
+    if(mode == ILI9341_DATA_MODE)
+    for(i=0;i<len;i++){
+        ILI9341_Write_Data (*(data+i));
+    }
+    else
+    for(i=0;i<len;i++){
+        ILI9341_Write_Cmd (*(data+i));
+    }
 }
 
 #endif
