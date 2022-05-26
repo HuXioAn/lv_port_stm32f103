@@ -638,19 +638,9 @@
               <FilePath>..\User\stm32f1xx_it.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\led\bsp_led.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_debug_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\usart\bsp_debug_usart.c</FilePath>
-            </File>
-            <File>
-              <FileName>fonts.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\font\fonts.c</FilePath>
             </File>
             <File>
               <FileName>bsp_ili9341_lcd.c</FileName>
@@ -661,13 +651,6 @@
         </Group>
         <Group>
           <GroupName>DOC</GroupName>
-          <Files>
-            <File>
-              <FileName>readme.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Doc\readme.txt</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>LVGL</GroupName>

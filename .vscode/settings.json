@@ -1,0 +1,5 @@
+{
+    "files.associations": {
+        "bsp_ili9341_lcd.h": "c"
+    }
+}
