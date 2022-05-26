@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include "./lcd/bsp_ili9341_lcd.h"
 #include "lvgl.h"
+#include "ILI9341.h"
+#include "XPT2046.h"
 
 #define LCD_VERTICAL_RES 240
 #define LCD_HORIZONTAL_RES 320
@@ -27,14 +29,14 @@ int main(void)
 	DEBUG_USART_Config();
   
   lv_init();
-  ILI9341_Init ();         //LCD 初始化
-
+  ILI9341_Init();         //LCD 初始化
+  xpt2046_init();
   //初始化buffer
 	lv_disp_draw_buf_init(&disp_buf, buf_1, buf_2, LCD_HORIZONTAL_RES*BUFFER_WIDTH);
   //初始化显示驱动
   lv_disp_drv_init(&disp_drv);            /*Basic initialization*/
   disp_drv.draw_buf = &disp_buf;          /*Set an initialized buffer*/
-  disp_drv.flush_cb = my_flush_cb;        /*Set a flush callback to draw to the display*/
+  disp_drv.flush_cb = ili9341_flush;        /*Set a flush callback to draw to the display*/
   disp_drv.hor_res = LCD_HORIZONTAL_RES;                 /*Set the horizontal resolution in pixels*/
   disp_drv.ver_res = LCD_VERTICAL_RES;                 /*Set the vertical resolution in pixels*/
 
@@ -42,6 +44,11 @@ int main(void)
   disp = lv_disp_drv_register(&disp_drv); /*Register the driver and save the created display objects*/
 
 
+  //lvgl时钟调度
+  while(1){
+    lv_timer_handler();
+    HAL_Delay(5);
+  }
 
 }
 

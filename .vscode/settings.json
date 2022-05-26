@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "bsp_ili9341_lcd.h": "c"
+        "bsp_ili9341_lcd.h": "c",
+        "ili9341.h": "c",
+        "lv_drv_conf.h": "c",
+        "lvgl.h": "c"
     }
 }

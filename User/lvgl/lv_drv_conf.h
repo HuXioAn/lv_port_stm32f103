@@ -8,7 +8,7 @@
  */
 
 /* clang-format off */
-#if 0 /*Set it to "1" to enable the content*/
+#if 1 /*Set it to "1" to enable the content*/
 
 #ifndef LV_DRV_CONF_H
 #define LV_DRV_CONF_H
@@ -302,7 +302,7 @@
  *  ILI9341 240X320 TFT LCD
  *------------------------------------------------*/
 #ifndef USE_ILI9341
-#  define USE_ILI9341       0
+#  define USE_ILI9341       1
 #endif
 
 #if USE_ILI9341
@@ -354,7 +354,7 @@
  *    XPT2046
  *--------------*/
 #ifndef USE_XPT2046
-#  define USE_XPT2046         0
+#  define USE_XPT2046         1
 #endif
 
 #if USE_XPT2046
