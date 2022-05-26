@@ -17,8 +17,8 @@
 *.uvguix.*
 .mxproject
 RTE/
-Templates/
-Examples/
+
+
 !*.uvprojx
 !*.h
 !*.c
