@@ -32,7 +32,7 @@ int main(void)
 	DEBUG_USART_Config();
   
   lv_init();
-  ILI9341_Init();         //LCD 初始化
+  ili9341_init();         //LCD 初始化
   xpt2046_init();
   //初始化buffer
 	lv_disp_draw_buf_init(&disp_buf, buf_1, buf_2, LCD_HORIZONTAL_RES*BUFFER_WIDTH);
