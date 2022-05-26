@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\CMSIS\Include;..\Libraries\CMSIS\Device\ST\STM32F1xx\Include;..\Libraries\STM32F1xx_HAL_Driver\Inc;..\User;..\User\lvgl;..\User\lvgl\examples\porting;..\User\lvgl\src;..\User\lvgl\src\core;..\User\lvgl\src\draw;..\User\lvgl\src\font;..\User\lvgl\src\hal;..\User\lvgl\src\misc;..\User\lvgl\src\widgets;..\User\lvgl\src\extra\*;..\User\lvgl\src\draw\sw;..\User\lvgl\src\extra\libs\bmp;..\User\lvgl\src\extra\libs\ffmpeg;..\User\lvgl\src\extra\libs\freetype;..\User\lvgl\src\extra\libs\fsdrv;..\User\lvgl\src\extra\libs\gif;..\User\lvgl\src\extra\libs\png;..\User\lvgl\src\extra\libs\qrcode;..\User\lvgl\src\extra\libs\rlottie;..\User\lvgl\src\extra\libs\sjpg</IncludePath>
+              <IncludePath>..\Libraries\CMSIS\Include;..\Libraries\CMSIS\Device\ST\STM32F1xx\Include;..\Libraries\STM32F1xx_HAL_Driver\Inc;..\User;..\User\lvgl;..\User\lvgl\examples\porting;..\User\lvgl\src;..\User\lvgl\src\core;..\User\lvgl\src\draw;..\User\lvgl\src\font;..\User\lvgl\src\hal;..\User\lvgl\src\misc;..\User\lvgl\src\widgets;..\User\lvgl\src\extra\*;..\User\lvgl\src\draw\sw;..\User\lvgl\src\extra\libs\bmp;..\User\lvgl\src\extra\libs\ffmpeg;..\User\lvgl\src\extra\libs\freetype;..\User\lvgl\src\extra\libs\fsdrv;..\User\lvgl\src\extra\libs\gif;..\User\lvgl\src\extra\libs\png;..\User\lvgl\src\extra\libs\qrcode;..\User\lvgl\src\extra\libs\rlottie;..\User\lvgl\src\extra\libs\sjpg;..\User\lcd;..\User\touchpad</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -646,6 +646,16 @@
               <FileName>bsp_ili9341_lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\lcd\bsp_ili9341_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>ILI9341.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\lcd\ILI9341.c</FilePath>
+            </File>
+            <File>
+              <FileName>XPT2046.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\touchpad\XPT2046.c</FilePath>
             </File>
           </Files>
         </Group>

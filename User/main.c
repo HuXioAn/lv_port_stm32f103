@@ -11,7 +11,7 @@
 #define LCD_VERTICAL_RES 240
 #define LCD_HORIZONTAL_RES 320
 
-#define BUFFER_WIDTH 24
+#define BUFFER_WIDTH 10
 
 static lv_disp_draw_buf_t disp_buf;
 static lv_disp_drv_t      disp_drv;

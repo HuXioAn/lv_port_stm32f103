@@ -68,22 +68,6 @@ extern uint16_t LCD_X_LENGTH,LCD_Y_LENGTH;
 //参数可选值为0-7
 extern uint8_t LCD_SCAN_MODE;
 
-/******************************* 定义 ILI934 显示屏常用颜色 ********************************/
-#define      BACKGROUND		                 BLACK     //默认背景颜色
-
-#define      WHITE		 		                 0xFFFF	   //白色
-#define      BLACK                         0x0000	   //黑色 
-#define      GREY                          0xF7DE	   //灰色 
-#define      BLUE                          0x001F	   //蓝色 
-#define      BLUE2                         0x051F	   //浅蓝色 
-#define      RED                           0xF800	   //红色 
-#define      MAGENTA                       0xF81F	   //红紫色，洋红色 
-#define      GREEN                         0x07E0	   //绿色 
-#define      CYAN                          0x7FFF	   //蓝绿色，青色 
-#define      YELLOW                        0xFFE0	   //黄色 
-#define      BRED                          0xF81F
-#define      GRED                          0xFFE0
-#define      GBLUE                         0x07FF
 
 
 
@@ -105,26 +89,9 @@ uint16_t                 ILI9341_ReadID                  ( void );
 void                     ILI9341_Rst                     ( void );
 void                     ILI9341_BackLed_Control         ( FunctionalState enumState );
 void                     ILI9341_GramScan                ( uint8_t ucOtion );
-void                     ILI9341_OpenWindow              ( uint16_t usX, uint16_t usY, uint16_t usWidth, uint16_t usHeight );
-void                     ILI9341_Clear                   ( uint16_t usX, uint16_t usY, uint16_t usWidth, uint16_t usHeight );
-void                     ILI9341_SetPointPixel           ( uint16_t usX, uint16_t usY );
-uint16_t                 ILI9341_GetPointPixel           ( uint16_t usX , uint16_t usY );
-void                     ILI9341_DrawLine                ( uint16_t usX1, uint16_t usY1, uint16_t usX2, uint16_t usY2 );
-void                     ILI9341_DrawRectangle           ( uint16_t usX_Start, uint16_t usY_Start, uint16_t usWidth, uint16_t usHeight,uint8_t ucFilled );
-void                     ILI9341_DrawCircle              ( uint16_t usX_Center, uint16_t usY_Center, uint16_t usRadius, uint8_t ucFilled );
-void                     ILI9341_DispChar_EN             ( uint16_t usX, uint16_t usY, const char cChar );
-void                     ILI9341_DispStringLine_EN      ( uint16_t line, char * pStr );
-void                     ILI9341_DispString_EN      			( uint16_t usX, uint16_t usY, char * pStr );
-void 											ILI9341_DispString_EN_YDir 		(   uint16_t usX,uint16_t usY ,  char * pStr );
-
-void 											LCD_SetFont											(sFONT *fonts);
-sFONT 										*LCD_GetFont											(void);
-void 											LCD_ClearLine										(uint16_t Line);
-void 											LCD_SetBackColor								(uint16_t Color);
-void 											LCD_SetTextColor								(uint16_t Color)	;
-void 											LCD_SetColors										(uint16_t TextColor, uint16_t BackColor);
-void 											LCD_GetColors										(uint16_t *TextColor, uint16_t *BackColor);
-uint16_t 								ILI9341_Read_ID									(void);
+void ILI9341_Write_Data ( uint16_t usData );
+void ILI9341_Write_Cmd ( uint16_t usCmd );
+void ILI9341_GPIO_Config ( void );
 
 
 /* 直接操作寄存器的方法控制IO */

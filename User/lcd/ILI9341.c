@@ -15,7 +15,7 @@
  *      INCLUDES
  *********************/
 #include "ILI9341.h"
-#include "./lcd/bsp_ili9341_lcd.h"
+#include "./bsp_ili9341_lcd.h"
 #if USE_ILI9341 != 0
 
 #include <stdio.h>
@@ -166,11 +166,14 @@ void ili9341_init(void)
     uint8_t data[15];
 
     /* hardware reset */
-    LV_DRV_DISP_SPI_CS(1);
-    LV_DRV_DISP_CMD_DATA(ILI9341_DATA_MODE);
-    LV_DRV_DISP_RST(0);
-    LV_DRV_DELAY_US(50);
-    LV_DRV_DISP_RST(1);
+    ILI9341_CS_SET;
+    
+    ILI9341_DC_SET;
+    //LV_DRV_DISP_CMD_DATA(ILI9341_DATA_MODE);
+    // LV_DRV_DISP_RST(0);
+    // LV_DRV_DELAY_US(50);
+    // LV_DRV_DISP_RST(1);
+    //no nrst
     LV_DRV_DELAY_MS(5);
 
     /* software reset */
