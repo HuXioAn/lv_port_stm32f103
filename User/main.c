@@ -4,13 +4,13 @@
   * @author  fire
   * @version V1.0
   * @date    2013-xx-xx
-  * @brief   ²âÊÔled
+  * @brief   æµ‹è¯•led
   ******************************************************************************
   * @attention
   *
-  * ÊµÑéÆ½Ì¨:Ò°»ğ F103 STM32 ¿ª·¢°å 
-  * ÂÛÌ³    :http://www.firebbs.cn
-  * ÌÔ±¦    :https://fire-stm32.taobao.com
+  * å®éªŒå¹³å°:é‡ç« F103 STM32 å¼€å‘æ¿ 
+  * è®ºå›    :http://www.firebbs.cn
+  * æ·˜å®    :https://fire-stm32.taobao.com
   *
   ******************************************************************************
   */ 
@@ -30,27 +30,27 @@ void Printf_Charater(void)   ;
 extern uint16_t lcdid;
 
 /*
- * º¯ÊıÃû£ºmain
- * ÃèÊö  £ºÖ÷º¯Êı
- * ÊäÈë  £ºÎŞ
- * Êä³ö  £ºÎŞ
+ * å‡½æ•°åï¼šmain
+ * æè¿°  ï¼šä¸»å‡½æ•°
+ * è¾“å…¥  ï¼šæ— 
+ * è¾“å‡º  ï¼šæ— 
  */
 int main(void)
 {   
-  /* Éè¶¨ÏµÍ³Ê±ÖÓÎª72MHz */
+  /* è®¾å®šç³»ç»Ÿæ—¶é’Ÿä¸º72MHz */
   SystemClock_Config();	
 	
-	/* ÅäÖÃ´®¿Ú1Îª£º115200 8-N-1 */
+	/* é…ç½®ä¸²å£1ä¸ºï¼š115200 8-N-1 */
 	DEBUG_USART_Config();
   
-	ILI9341_Init ();         //LCD ³õÊ¼»¯
+	ILI9341_Init ();         //LCD åˆå§‹åŒ–
 
-	printf("\r\n ********** Òº¾§ÆÁÓ¢ÎÄÏÔÊ¾³ÌĞò*********** \r\n"); 
-	printf("\r\n ±¾³ÌĞò²»Ö§³ÖÖĞÎÄ£¬ÏÔÊ¾ÖĞÎÄµÄ³ÌĞòÇëÑ§Ï°ÏÂÒ»ÕÂ \r\n"); 
+	printf("\r\n ********** æ¶²æ™¶å±è‹±æ–‡æ˜¾ç¤ºç¨‹åº*********** \r\n"); 
+	printf("\r\n æœ¬ç¨‹åºä¸æ”¯æŒä¸­æ–‡ï¼Œæ˜¾ç¤ºä¸­æ–‡çš„ç¨‹åºè¯·å­¦ä¹ ä¸‹ä¸€ç«  \r\n"); 
 	
- //ÆäÖĞ0¡¢3¡¢5¡¢6 Ä£Ê½ÊÊºÏ´Ó×óÖÁÓÒÏÔÊ¾ÎÄ×Ö£¬
- //²»ÍÆ¼öÊ¹ÓÃÆäËüÄ£Ê½ÏÔÊ¾ÎÄ×Ö	ÆäËüÄ£Ê½ÏÔÊ¾ÎÄ×Ö»áÓĞ¾µÏñĞ§¹û			
- //ÆäÖĞ 6 Ä£Ê½Îª´ó²¿·ÖÒº¾§Àı³ÌµÄÄ¬ÈÏÏÔÊ¾·½Ïò  
+ //å…¶ä¸­0ã€3ã€5ã€6 æ¨¡å¼é€‚åˆä»å·¦è‡³å³æ˜¾ç¤ºæ–‡å­—ï¼Œ
+ //ä¸æ¨èä½¿ç”¨å…¶å®ƒæ¨¡å¼æ˜¾ç¤ºæ–‡å­—	å…¶å®ƒæ¨¡å¼æ˜¾ç¤ºæ–‡å­—ä¼šæœ‰é•œåƒæ•ˆæœ			
+ //å…¶ä¸­ 6 æ¨¡å¼ä¸ºå¤§éƒ¨åˆ†æ¶²æ™¶ä¾‹ç¨‹çš„é»˜è®¤æ˜¾ç¤ºæ–¹å‘  
   if(lcdid == LCDID_ILI9341)
   {
     ILI9341_GramScan ( 6 );
@@ -67,10 +67,10 @@ int main(void)
 }
 
 
-/*ÓÃÓÚ²âÊÔ¸÷ÖÖÒº¾§µÄº¯Êı*/
+/*ç”¨äºæµ‹è¯•å„ç§æ¶²æ™¶çš„å‡½æ•°*/
 void LCD_Test(void)
 {
-	/*ÑİÊ¾ÏÔÊ¾±äÁ¿*/
+	/*æ¼”ç¤ºæ˜¾ç¤ºå˜é‡*/
 	static uint8_t testCNT = 0;	
 	char dispBuff[100];
 	
@@ -79,8 +79,8 @@ void LCD_Test(void)
 	LCD_SetFont(&Font8x16);
 	LCD_SetColors(RED,BLACK);
 
-  ILI9341_Clear(0,0,LCD_X_LENGTH,LCD_Y_LENGTH);	/* ÇåÆÁ£¬ÏÔÊ¾È«ºÚ */
-	/********ÏÔÊ¾×Ö·û´®Ê¾Àı*******/
+  ILI9341_Clear(0,0,LCD_X_LENGTH,LCD_Y_LENGTH);	/* æ¸…å±ï¼Œæ˜¾ç¤ºå…¨é»‘ */
+	/********æ˜¾ç¤ºå­—ç¬¦ä¸²ç¤ºä¾‹*******/
   ILI9341_DispStringLine_EN(LINE(0),"BH 3.2_2.8 inch LCD para:");
   ILI9341_DispStringLine_EN(LINE(1),"Image resolution:240x320 px");
   if(lcdid == LCDID_ILI9341)
@@ -93,22 +93,22 @@ void LCD_Test(void)
   }
   ILI9341_DispStringLine_EN(LINE(3),"XPT2046 Touch Pad driver");
   
-	/********ÏÔÊ¾±äÁ¿Ê¾Àı*******/
+	/********æ˜¾ç¤ºå˜é‡ç¤ºä¾‹*******/
 	LCD_SetFont(&Font16x24);
 	LCD_SetTextColor(GREEN);
 
-	/*Ê¹ÓÃc±ê×¼¿â°Ñ±äÁ¿×ª»¯³É×Ö·û´®*/
+	/*ä½¿ç”¨cæ ‡å‡†åº“æŠŠå˜é‡è½¬åŒ–æˆå­—ç¬¦ä¸²*/
 	sprintf(dispBuff,"Count : %d ",testCNT);
-  LCD_ClearLine(LINE(4));	/* Çå³ıµ¥ĞĞÎÄ×Ö */
+  LCD_ClearLine(LINE(4));	/* æ¸…é™¤å•è¡Œæ–‡å­— */
 	
-	/*È»ºóÏÔÊ¾¸Ã×Ö·û´®¼´¿É£¬ÆäËü±äÁ¿Ò²ÊÇÕâÑù´¦Àí*/
+	/*ç„¶åæ˜¾ç¤ºè¯¥å­—ç¬¦ä¸²å³å¯ï¼Œå…¶å®ƒå˜é‡ä¹Ÿæ˜¯è¿™æ ·å¤„ç†*/
 	ILI9341_DispStringLine_EN(LINE(4),dispBuff);
 
-	/*******ÏÔÊ¾Í¼ĞÎÊ¾Àı******/
+	/*******æ˜¾ç¤ºå›¾å½¢ç¤ºä¾‹******/
 	LCD_SetFont(&Font24x32);
-  /* »­Ö±Ïß */
+  /* ç”»ç›´çº¿ */
   
-  LCD_ClearLine(LINE(4));/* Çå³ıµ¥ĞĞÎÄ×Ö */
+  LCD_ClearLine(LINE(4));/* æ¸…é™¤å•è¡Œæ–‡å­— */
 	LCD_SetTextColor(BLUE);
 
   ILI9341_DispStringLine_EN(LINE(4),"Draw line:");
@@ -127,12 +127,12 @@ void LCD_Test(void)
   
   Delay(0xFFFFFF);
   
-  ILI9341_Clear(0,16*8,LCD_X_LENGTH,LCD_Y_LENGTH-16*8);	/* ÇåÆÁ£¬ÏÔÊ¾È«ºÚ */
+  ILI9341_Clear(0,16*8,LCD_X_LENGTH,LCD_Y_LENGTH-16*8);	/* æ¸…å±ï¼Œæ˜¾ç¤ºå…¨é»‘ */
   
   
-  /*»­¾ØĞÎ*/
+  /*ç”»çŸ©å½¢*/
 
-  LCD_ClearLine(LINE(4));	/* Çå³ıµ¥ĞĞÎÄ×Ö */
+  LCD_ClearLine(LINE(4));	/* æ¸…é™¤å•è¡Œæ–‡å­— */
 	LCD_SetTextColor(BLUE);
 
   ILI9341_DispStringLine_EN(LINE(4),"Draw Rect:");
@@ -149,10 +149,10 @@ void LCD_Test(void)
   
   Delay(0xFFFFFF);
 	
-	ILI9341_Clear(0,16*8,LCD_X_LENGTH,LCD_Y_LENGTH-16*8);	/* ÇåÆÁ£¬ÏÔÊ¾È«ºÚ */
+	ILI9341_Clear(0,16*8,LCD_X_LENGTH,LCD_Y_LENGTH-16*8);	/* æ¸…å±ï¼Œæ˜¾ç¤ºå…¨é»‘ */
 
-  /* »­Ô² */
-  LCD_ClearLine(LINE(4));	/* Çå³ıµ¥ĞĞÎÄ×Ö */
+  /* ç”»åœ† */
+  LCD_ClearLine(LINE(4));	/* æ¸…é™¤å•è¡Œæ–‡å­— */
 	LCD_SetTextColor(BLUE);
 	
   ILI9341_DispStringLine_EN(LINE(4),"Draw Cir:");
@@ -168,15 +168,15 @@ void LCD_Test(void)
 
   Delay(0xFFFFFF);
   
-  ILI9341_Clear(0,16*8,LCD_X_LENGTH,LCD_Y_LENGTH-16*8);	/* ÇåÆÁ£¬ÏÔÊ¾È«ºÚ */
+  ILI9341_Clear(0,16*8,LCD_X_LENGTH,LCD_Y_LENGTH-16*8);	/* æ¸…å±ï¼Œæ˜¾ç¤ºå…¨é»‘ */
 
 }
 
 
 /**
-  * @brief  ¼òµ¥ÑÓÊ±º¯Êı
-  * @param  nCount £ºÑÓÊ±¼ÆÊıÖµ
-  * @retval ÎŞ
+  * @brief  ç®€å•å»¶æ—¶å‡½æ•°
+  * @param  nCount ï¼šå»¶æ—¶è®¡æ•°å€¼
+  * @retval æ— 
   */	
 static void Delay ( __IO uint32_t nCount )
 {

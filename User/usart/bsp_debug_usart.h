@@ -4,10 +4,10 @@
 #include "stm32f1xx.h"
 #include <stdio.h>
 
-//´®¿Ú²¨ÌØÂÊ
+//ä¸²å£æ³¢ç‰¹çŽ‡
 #define DEBUG_USART_BAUDRATE                    115200
 
-//Òý½Å¶¨Òå
+//å¼•è„šå®šä¹‰
 /*******************************************************/
 #define DEBUG_USART                             USART1
 #define DEBUG_USART_CLK_ENABLE()                __HAL_RCC_USART1_CLK_ENABLE();
