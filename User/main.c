@@ -22,9 +22,12 @@ static lv_color_t buf_2[LCD_HORIZONTAL_RES * BUFFER_WIDTH];
 
 int main(void)
 {   
+  //初始化HAL，使用systick的1ms节拍来为lvgl产生时钟
+  HAL_Init();
   /* 设定系统时钟为72MHz */
   SystemClock_Config();	
 	
+  
 	/* 配置串口1为：115200 8-N-1 */
 	DEBUG_USART_Config();
   

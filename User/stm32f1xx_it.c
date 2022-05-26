@@ -39,6 +39,7 @@
 #include "main.h"
 #include "stm32f1xx_it.h"
 #include "./usart/bsp_debug_usart.h"
+#include "lvgl.h"
 
 /** @addtogroup STM32F4xx_HAL_Examples
   * @{
@@ -155,6 +156,7 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   HAL_IncTick();
+  lv_tick_inc(1);//lvgl
 }
 
 /******************************************************************************/
