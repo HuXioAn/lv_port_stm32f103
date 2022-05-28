@@ -90,6 +90,44 @@ void Usart_SendString(uint8_t *str)
   } while(*(str + k)!='\0');
   
 }
+
+
+#if 1  
+
+#pragma import(__use_no_semihosting)               
+
+//标准库需要的支持函数                   
+
+struct __FILE   
+
+{   
+
+    int handle;   
+
+    /* Whatever you require here. If the only file you are using is */   
+
+    /* standard output using printf() for debugging, no file handling */   
+
+    /* is required. */   
+
+};   
+
+/* FILE is typedef’ d in stdio.h. */   
+
+FILE __stdout;         
+
+//定义_sys_exit()以避免使用半主机模式      
+
+void _sys_exit(int x)   
+
+{   
+
+    x = x;   
+
+}   
+
+
+
 //重定向c库函数printf到串口DEBUG_USART，重定向后可使用printf函数
 int fputc(int ch, FILE *f)
 {
@@ -98,6 +136,8 @@ int fputc(int ch, FILE *f)
 	
 	return (ch);
 }
+
+#endif
 
 //重定向c库函数scanf到串口DEBUG_USART，重写向后可使用scanf、getchar等函数
 int fgetc(FILE *f)
