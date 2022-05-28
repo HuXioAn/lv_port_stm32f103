@@ -35,7 +35,7 @@ extern "C" {
 #endif
 
 #if LV_COLOR_16_SWAP != 1
-#error "ILI9341 SPI requires LV_COLOR_16_SWAP == 1. Set it in lv_conf.h"
+//#error "ILI9341 SPI requires LV_COLOR_16_SWAP == 1. Set it in lv_conf.h"
 #endif
 
 /*********************
