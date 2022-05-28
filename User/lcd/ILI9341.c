@@ -141,6 +141,7 @@
  **********************/
 static void ili9341_write(int mode, uint8_t data);
 static inline void ili9341_write_array(int mode, uint8_t *data, uint16_t len);
+static inline void ili9341_write_color_array(uint8_t *data, uint16_t len);
 
 /**********************
  *  STATIC VARIABLES
@@ -376,7 +377,7 @@ void ili9341_flush(lv_disp_drv_t * drv, const lv_area_t * area, lv_color_t * col
     ili9341_write(ILI9341_CMD_MODE, ILI9341_RAMWR);
 
     for(y = act_y1; y <= act_y2; y++) {
-        ili9341_write_array(ILI9341_DATA_MODE, (uint8_t *)color_p, len);
+        ili9341_write_color_array((uint8_t *)color_p, len);
         color_p += w;
     }
 
@@ -444,6 +445,17 @@ static inline void ili9341_write_array(int mode, uint8_t *data, uint16_t len)
     for(i=0;i<len;i++){
         ILI9341_Write_Cmd (*(data+i));
     }
+}
+
+
+static inline void ili9341_write_color_array(uint8_t *data, uint16_t len)
+{
+    uint32_t i;
+   
+    for(i=0;i<len;i+=2){
+        ILI9341_Write_Data (*(data+i)| (*(data+i+1)<<8));
+    }
+    
 }
 
 #endif
