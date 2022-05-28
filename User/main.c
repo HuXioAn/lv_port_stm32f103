@@ -19,7 +19,6 @@ static lv_disp_drv_t      disp_drv;
 static lv_color_t buf_1[LCD_HORIZONTAL_RES * BUFFER_WIDTH];
 //static lv_color_t buf_2[LCD_HORIZONTAL_RES * BUFFER_WIDTH];
 
-void lv_example_anim_2(void);
 
 int main(void)
 {   
@@ -51,15 +50,31 @@ int main(void)
   lv_disp_t * disp;
   disp = lv_disp_drv_register(&disp_drv); /*Register the driver and save the created display objects*/
 	
-		lv_obj_t * obj1;
-    obj1 = lv_obj_create(lv_scr_act());
-    lv_obj_set_size(obj1, 60, 60);
-    //lv_obj_align(obj1, LV_ALIGN_CENTER, 0, 0);
-		lv_obj_set_pos(obj1,10,10);
+	lv_obj_t * obj1;
+	obj1 = lv_obj_create(lv_scr_act());
+	lv_obj_set_size(obj1, 60, 60);
+	//lv_obj_align(obj1, LV_ALIGN_CENTER, 0, 0);
+	lv_obj_set_pos(obj1,10,10);
 
 
-    
-	lv_example_anim_2();
+  lv_obj_t * label1 = lv_label_create(lv_scr_act());
+    lv_label_set_long_mode(label1, LV_LABEL_LONG_WRAP);     /*Break the long lines*/
+    lv_label_set_recolor(label1, true);                      /*Enable re-coloring by commands in the text*/
+    lv_label_set_text(label1, "#0000ff Huxiaoan# #ff00ff 胡小安# #ff0000 Huxiaoan#  "
+                      "Lvgl V8.2 on STM32F103@72MHz.");
+		lv_obj_set_style_text_font(label1,&lv_font_montserrat_20,0);
+    lv_obj_set_width(label1, 150);  /*Set smaller width to make the lines wrap*/
+    lv_obj_set_style_text_align(label1, LV_TEXT_ALIGN_CENTER, 0);
+    lv_obj_align(label1, LV_ALIGN_CENTER, 0, -40);
+		
+
+    lv_obj_t * label2 = lv_label_create(lv_scr_act());
+    lv_label_set_long_mode(label2, LV_LABEL_LONG_SCROLL_CIRCULAR);     /*Circular scroll*/
+    lv_obj_set_width(label2, 150);
+    lv_label_set_text(label2, "Huxiaoan 胡小安 Huxiaoan ");
+		lv_obj_set_style_text_font(label2,&lv_font_montserrat_20,0);
+    lv_obj_align(label2, LV_ALIGN_CENTER, 0, 40);
+	
 	
   
 	
@@ -72,48 +87,6 @@ int main(void)
 
 }
 
-
-
-
-static void anim_x_cb(void * var, int32_t v)
-{
-    lv_obj_set_x(var, v);
-}
-
-static void anim_size_cb(void * var, int32_t v)
-{
-    lv_obj_set_size(var, v, v);
-}
-
-/**
- * Create a playback animation
- */
-void lv_example_anim_2(void)
-{
-
-    lv_obj_t * obj = lv_obj_create(lv_scr_act());
-    lv_obj_set_style_bg_color(obj, lv_palette_main(LV_PALETTE_RED), 0);
-    lv_obj_set_style_radius(obj, LV_RADIUS_CIRCLE, 0);
-
-    lv_obj_align(obj, LV_ALIGN_LEFT_MID, 10, 0);
-
-    lv_anim_t a;
-    lv_anim_init(&a);
-    lv_anim_set_var(&a, obj);
-    lv_anim_set_values(&a, 10, 50);
-    lv_anim_set_time(&a, 1000);
-    lv_anim_set_playback_delay(&a, 100);
-    lv_anim_set_playback_time(&a, 300);
-    lv_anim_set_repeat_delay(&a, 500);
-    lv_anim_set_repeat_count(&a, LV_ANIM_REPEAT_INFINITE);
-    lv_anim_set_path_cb(&a, lv_anim_path_ease_in_out);
-
-    lv_anim_set_exec_cb(&a, anim_size_cb);
-    lv_anim_start(&a);
-    lv_anim_set_exec_cb(&a, anim_x_cb);
-    lv_anim_set_values(&a, 10, 240);
-    lv_anim_start(&a);
-}
 
 
 
