@@ -8,7 +8,7 @@
  *********************/
 #include "XPT2046.h"
 #if USE_XPT2046
-
+#include "bsp_xpt2046_lcd.h"
 #include <stddef.h>
 #include LV_DRV_INDEV_INCLUDE
 #include LV_DRV_DELAY_INCLUDE
@@ -49,7 +49,7 @@ uint8_t avg_last;
  */
 void xpt2046_init(void)
 {
-
+    XPT2046_Init();
 }
 
 /**

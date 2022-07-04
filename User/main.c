@@ -7,6 +7,7 @@
 #include "lvgl.h"
 #include "ILI9341.h"
 #include "XPT2046.h"
+#include "../touchpad/bsp_xpt2046_lcd.h"
 
 #define LCD_VERTICAL_RES 320
 #define LCD_HORIZONTAL_RES 240
@@ -15,6 +16,7 @@
 
 static lv_disp_draw_buf_t disp_buf;
 static lv_disp_drv_t disp_drv;
+static lv_indev_drv_t indev_drv;
 
 static lv_color_t buf_1[LCD_HORIZONTAL_RES * BUFFER_WIDTH];
 // static lv_color_t buf_2[LCD_HORIZONTAL_RES * BUFFER_WIDTH];
@@ -30,11 +32,11 @@ int main(void)
   DEBUG_USART_Config();
 
   lv_init();
-  // ili9341_init();         //LCD 初始化
+  
+  ILI9341_Init();// ili9341_init();         //LCD 初始化
 
-  ILI9341_Init();
+  xpt2046_init();// xpt2046_init();
 
-  // xpt2046_init();
   //初始化buffer
   lv_disp_draw_buf_init(&disp_buf, buf_1, NULL, LCD_HORIZONTAL_RES * BUFFER_WIDTH);
   //初始化显示驱动
@@ -47,35 +49,29 @@ int main(void)
   lv_disp_t *disp;
   disp = lv_disp_drv_register(&disp_drv); /*Register the driver and save the created display objects*/
 
-  lv_obj_t *obj1;
-  obj1 = lv_obj_create(lv_scr_act());
-  lv_obj_set_size(obj1, 60, 60);
-  // lv_obj_align(obj1, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_pos(obj1, 10, 10);
 
-  lv_obj_t *label1 = lv_label_create(lv_scr_act());
-  lv_label_set_long_mode(label1, LV_LABEL_LONG_WRAP); /*Break the long lines*/
-  lv_label_set_recolor(label1, true);                 /*Enable re-coloring by commands in the text*/
-  lv_label_set_text(label1, "#0000ff Huxiaoan# #ff00ff 胡小安# #ff0000 Huxiaoan#  "
-                            "#000000 Lvgl V8.2 on STM32F103@72MHz.#");
-  lv_obj_set_style_text_font(label1, &lv_font_montserrat_20, 0);
-  lv_obj_set_width(label1, 150); /*Set smaller width to make the lines wrap*/
-  lv_obj_set_style_text_align(label1, LV_TEXT_ALIGN_CENTER, 0);
-  lv_obj_align(label1, LV_ALIGN_CENTER, 0, -40);
+  //触摸部分
+  // lv_indev_drv_init(&indev_drv);
+  // indev_drv.type=LV_INDEV_TYPE_POINTER;
+  // indev_drv.read_cb=  ;
+  // lv_indev_t *touchpad;
+  // touchpad = lv_indev_drv_register(&indev_drv);
 
-  lv_obj_t *label2 = lv_label_create(lv_scr_act());
-  lv_label_set_long_mode(label2, LV_LABEL_LONG_SCROLL_CIRCULAR); /*Circular scroll*/
-  lv_obj_set_width(label2, 150);
-  lv_label_set_text(label2, "Huxiaoan 胡小安 Huxiaoan ");
-  lv_obj_set_style_text_font(label2, &lv_font_montserrat_20, 0);
-  lv_obj_align(label2, LV_ALIGN_CENTER, 0, 40);
+  strType_XPT2046_Coordinate touch={-1,-1,-1,-1};
+  while(1){
+    HAL_Delay(500);
+    XPT2046_Get_TouchedPoint(&touch,strXPT2046_TouchPara);
+
+    printf("X:%d  Y:%d",touch.x,touch.y);
+  }
+
 
   // lvgl时钟调度
-  while (1)
-  {
-    lv_timer_handler();
-    HAL_Delay(5);
-  }
+  // while (1)
+  // {
+  //   lv_timer_handler();
+  //   HAL_Delay(5);
+  // }
 }
 
 static void Delay(__IO uint32_t nCount)

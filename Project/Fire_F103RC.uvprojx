@@ -312,7 +312,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -656,6 +656,11 @@
               <FileName>XPT2046.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\touchpad\XPT2046.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_xpt2046_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\touchpad\bsp_xpt2046_lcd.c</FilePath>
             </File>
           </Files>
         </Group>

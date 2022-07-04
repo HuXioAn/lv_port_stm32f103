@@ -14,12 +14,11 @@
   ******************************************************************************
   */ 
 
-#include "./lcd/bsp_xpt2046_lcd.h"
+#include "./touchpad/bsp_xpt2046_lcd.h"
 #include "./lcd/bsp_ili9341_lcd.h"
-#include "./led/bsp_led.h"
-#include "./font/fonts.h"
-#include "./flash/bsp_spi_flash.h"
-#include "palette.h"
+
+
+#include "stm32f10x.h"
 #include <stdio.h> 
 #include <string.h>
 

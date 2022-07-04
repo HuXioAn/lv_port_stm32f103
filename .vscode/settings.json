@@ -4,6 +4,8 @@
         "ili9341.h": "c",
         "lv_drv_conf.h": "c",
         "lvgl.h": "c",
-        "stm32f1xx.h": "c"
+        "stm32f1xx.h": "c",
+        "bsp_xpt2046_lcd.h": "c",
+        "stdio.h": "c"
     }
 }
